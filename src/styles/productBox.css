@@ -1,0 +1,15 @@
+.mainBox
+{
+    
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+    
+    
+    
+}
+.imageBox
+{
+margin:5px;
+border: 0px solid green;
+}
+
+/* w-[350px] flex flex-col justify-center my-[20px] mx-[20px] */
