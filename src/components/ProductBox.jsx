@@ -1,12 +1,27 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { add, remove } from '../store/cartSlice';
 import '../styles/ProductBox.css'
+import { useEffect, useState } from 'react';
 export const ProductBox = ({product}) => {
 
   const dispatch = useDispatch();
+  const cartProducts = useSelector(state => state.cartState.cartList);
+  const [isInCart, setIsInCart] = useState(false);
 
-  const {name,price,image} =  product;
+  const {id,name,price,image} =  product;
 
+  useEffect(()=>{
+    const productInCart = cartProducts.find(item => item.id === id);
+
+    if(productInCart)
+    {
+      setIsInCart(true);
+    }
+    else
+    {
+      setIsInCart(false);
+    }
+  },[cartProducts, id])
 
   return (
     
@@ -22,7 +37,8 @@ export const ProductBox = ({product}) => {
 
           <div className="underDetailBox grid grid-cols-2 gap-8 py-4 px-4 text-center items-center ">
               <p className='bg-red-800  inline-block  text-white font-extrabold w-[50px] p-1   rounded '>${price}</p>
-              <button onClick={()=> dispatch(add(product)) } className='bg-sky-600 inline-block  p-1 rounded text-white '>Add to cart</button>
+              {isInCart ? (<button onClick={()=> dispatch(remove(product)) } className='bg-red-800 inline-block  p-1 rounded text-white '>Remove</button>) : (<button onClick={()=> dispatch(add(product)) } className='bg-sky-600 inline-block  p-1 rounded text-white '>Add to cart</button>)}
+              
           </div>
 
       </div>
