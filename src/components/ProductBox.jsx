@@ -1,5 +1,9 @@
+import { useDispatch } from 'react-redux';
+import { add, remove } from '../store/cartSlice';
 import '../styles/ProductBox.css'
 export const ProductBox = ({product}) => {
+
+  const dispatch = useDispatch();
 
   const {name,price,image} =  product;
 
@@ -18,7 +22,7 @@ export const ProductBox = ({product}) => {
 
           <div className="underDetailBox grid grid-cols-2 gap-8 py-4 px-4 text-center items-center ">
               <p className='bg-red-800  inline-block  text-white font-extrabold w-[50px] p-1   rounded '>${price}</p>
-              <button className='bg-sky-600 inline-block  p-1 rounded text-white '>Add to cart</button>
+              <button onClick={()=> dispatch(add(product)) } className='bg-sky-600 inline-block  p-1 rounded text-white '>Add to cart</button>
           </div>
 
       </div>
