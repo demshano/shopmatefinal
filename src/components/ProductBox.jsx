@@ -10,6 +10,26 @@ export const ProductBox = ({product}) => {
 
   const {id,name,price,image} =  product;
 
+  const [isSmallScreen, setIsSmallScreen] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsSmallScreen(window.innerWidth < 640);
+    };
+
+    // Initial check
+    handleResize();
+
+    // Listen for window resize events
+    window.addEventListener('resize', handleResize);
+
+    // Cleanup the event listener on component unmount
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+
   useEffect(()=>{
     const productInCart = cartProducts.find(item => item.id === id);
 
@@ -37,7 +57,7 @@ export const ProductBox = ({product}) => {
 
           <div className="underDetailBox grid grid-cols-2 gap-8 py-4 px-4 text-center items-center ">
               <p className='bg-red-800  inline-block  text-white font-extrabold w-[50px] p-1   rounded '>${price}</p>
-              {isInCart ? (<button onClick={()=> dispatch(remove(product)) } className='bg-red-800 inline-block  p-1 rounded text-white '>Remove</button>) : (<button onClick={()=> dispatch(add(product)) } className='bg-sky-600 inline-block  p-1 rounded text-white '>Add to cart</button>)}
+              {isInCart ? (<button onClick={()=> dispatch(remove(product)) } className='bg-red-800 inline-block  p-1 rounded text-white text-sm md:text-md'>Remove</button>) : (<button onClick={()=> dispatch(add(product)) } className='bg-sky-600 inline-block  p-1 rounded text-white text-sm md:text-md '> {isSmallScreen ? 'Add' : 'Add to cart'}</button>)}
               
           </div>
 
