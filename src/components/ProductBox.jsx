@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { add, remove } from '../store/cartSlice';
-import '../styles/ProductBox.css'
+import '../styles/ProductBox.css';
 import { useEffect, useState } from 'react';
 export const ProductBox = ({product}) => {
 

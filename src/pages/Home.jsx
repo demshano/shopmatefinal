@@ -21,10 +21,10 @@ export const Home = () => {
 
   return (
     <>
-        <div className="2xl:ml-[1400px] ">
+        {/* <div className="2xl:ml-[1400px] ">
             <img className="w-[60px] flex" src={`/assets/images/cart1.png`} alt="cart" />
             <span className="flex ml-[42px] mt-[-55px] text-white font-semibold ">0</span>
-        </div>
+        </div> */}
 
         <div>
 
