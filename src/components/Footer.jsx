@@ -10,18 +10,16 @@ export const Footer = () => {
       
     // </div>
 
-    <div className="flex flex-col min-h-screen">
-  {/* Content */}
-  <div className="flex-grow">
-    {/* Your page content goes here */}
-  </div>
+  <div className="flex flex-col ">
 
-  {/* Footer */}
-  <div className='w-full bg-slate-900 h-[200px] flex justify-center items-center'>
+  <div className='w-full bg-slate-900 h-[200px] flex justify-center items-center mt-[500px]'>
+
     <div className='text-fuchsia-500 text-5xl'>
       footer
     </div>
+
   </div>
+
 </div>
 
   )
