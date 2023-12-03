@@ -1,7 +1,10 @@
+import { useSelector } from 'react-redux';
 import '../styles/header.css';
 import { Link } from 'react-router-dom';
 
 export const Header = () => {
+
+  const cartProducts = useSelector(state => state.cartState.cartList)
   return (
 
   
@@ -23,7 +26,7 @@ export const Header = () => {
               </li>
 
               <li>
-                <Link to='cart'>cart items: 2</Link>
+                <Link to='cart'>cart items: <span>{cartProducts.length}</span></Link>
               </li>
           </ul>
 

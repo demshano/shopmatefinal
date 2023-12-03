@@ -1,5 +1,8 @@
+import { useDispatch } from "react-redux";
+import { remove } from "../store/cartSlice";
 export const CartBox = ({cartProduct}) => {
 
+    const dispatch = useDispatch();
      const {image , name , price} = cartProduct;
 
      console.log('hello')
@@ -27,7 +30,7 @@ export const CartBox = ({cartProduct}) => {
                     </div>
 
                     <div className='flex flex-col justify-between '>
-                        <button className='w-28 bg-red-600 rounded-md py-2 text-white font-semibold'>Remove</button>
+                        <button onClick={()=>dispatch(remove(cartProduct))} className='w-28 bg-red-600 rounded-md py-2 text-white font-semibold'>Remove</button>
                     </div>
 
             </div>
