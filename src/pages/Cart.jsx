@@ -1,17 +1,25 @@
-import React from 'react';
+import { useSelector } from 'react-redux';
 import { CartBox } from '../components';
 
 export const Cart = () => {
-  const cartProducts = [
-    { id: 1, name: 'Sony Wh-Ch510 Bluetooth Wireless', price: 149, image: '/assets/images/1001.png' },
-    { id: 2, name: 'boAt Rockerz 450', price: 49, image: '/assets/images/1002.png' },
-  ];
+  
+const cartProducts = useSelector(state => state.cartState.cartList);
+const total = useSelector(state => state.cartState.total);
 
   return (
     <div>
       <div className='flex justify-center items-center py-4 text-2xl font-bold'>
-        <p>Cart Item:</p>
-        <p>2</p>
+
+      <div className='flex'>
+        <p>Cart Item: </p>
+        <p>{cartProducts.length}</p>
+      </div>
+
+      <div className='flex px-4'>
+        <p>Total Price: </p>
+        <p>${total}</p>
+      </div>
+
       </div>
 
       <div>
